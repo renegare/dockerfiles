@@ -1,5 +1,6 @@
 REPO = renegare
 NAME = $(shell basename `pwd`)
+CMD = /bin/bash
 
 all: build build-version push
 
@@ -8,6 +9,9 @@ build:
 
 build-version: build
 	docker build --force-rm=true -q --rm=true -t $(REPO)/$(NAME):$(shell docker run --rm=true -t $(REPO)/$(NAME) echo `nginx -v 2>&1 | sed 's/[^0-9\.]//g'`) .
+
+run:
+	docker run --rm=true -it $(REPO)/$(NAME) ${CMD}
 
 push:
 	docker push $(REPO)/$(NAME):latest

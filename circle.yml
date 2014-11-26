@@ -11,3 +11,4 @@ test:
     override:
         - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
         - make -C nginx
+        - make -C nginx-php

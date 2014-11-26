@@ -6,9 +6,8 @@ general:
 machine:
     python:
         version: 2.7.5
-
-services:
-    - docker
+    services:
+        - docker
 
 dependencies:
     override:

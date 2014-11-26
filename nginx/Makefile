@@ -12,4 +12,4 @@ clean:
 	fig rm --force
 
 push:
-	echo "Pushing: docker push renegare/nginx:${VERSION}"
+	docker push renegare/nginx:${VERSION}

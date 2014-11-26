@@ -5,6 +5,7 @@ CMD = /bin/bash
 all: build build-version push
 
 build:
+	docker pull $(REPO)/$(NAME)
 	docker build --force-rm=true -q --rm=true -t $(REPO)/$(NAME):latest .
 
 build-version: build

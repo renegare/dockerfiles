@@ -5,6 +5,7 @@ CMD = /bin/bash
 all: build build-version push
 
 build:
+	docker pull $(REPO)/$(NAME)
 	docker build --force-rm=true -q --rm=true -t $(REPO)/$(NAME):latest .
 
 build-version: export VERSION=$(shell docker run --rm=true -t $(REPO)/$(NAME) php -v | grep -m 1 PHP | sed 's/PHP \([^ -]*\).*/\1/')

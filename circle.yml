@@ -1,0 +1,19 @@
+general:
+    branches:
+        only:
+            - master
+
+machine:
+    python:
+        version: 2.7.5
+
+services:
+    - docker
+
+dependencies:
+    override:
+        - pip install fig==1.0.1
+
+test:
+    override:
+        - make -C nginx build push VERSION=1.6.2

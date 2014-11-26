@@ -10,3 +10,6 @@ run:
 clean:
 	fig kill
 	fig rm --force
+
+push:
+	echo "Pushing: docker push renegare/nginx:${VERSION}"

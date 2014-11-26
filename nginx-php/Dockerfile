@@ -1,6 +1,8 @@
 FROM renegare/nginx:1.6.2
 MAINTAINER Mudi Renegare <mudi@renegare.com>
 
+RUN apt-get update
+
 RUN apt-get install -y \
     php5-fpm php5-cli \
     php5-mysql php5-json \

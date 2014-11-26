@@ -10,4 +10,4 @@ RUN apt-get install -y nginx=1.6.2-4+trusty0
 
 RUN apt-get install -y curl wget
 
-CMD ["/bin/bash"]
+CMD nginx

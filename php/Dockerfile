@@ -25,4 +25,4 @@ EXPOSE 80
 
 WORKDIR /var/www/html
 
-CMD service php5-fpm start && nginx
+CMD php -v | grep -m 1 PHP | sed 's/PHP \([^ -]*\).*/\1/'

@@ -10,5 +10,6 @@ machine:
 test:
     override:
         - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
-        - make -C nginx
-        - make -C nginx-php
+        - make build tag push IMAGE=nginx
+        - make build tag push IMAGE=php
+        - make build tag push IMAGE=phantomjs

@@ -11,4 +11,4 @@ RUN apt-get install -y nginx=1.6.2-4+trusty0
 
 RUN apt-get install -y curl wget
 
-CMD nginx
+CMD nginx -v 2>&1 | grep -m 1 nginx | sed 's/[^0-9\.]//g'

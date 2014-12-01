@@ -10,7 +10,8 @@ RUN apt-get install -y \
     php5-imagick php5-gd \
     php5-intl php5-mcrypt \
     php5-memcache php5-memcached \
-    php5-mongo php5-apcu
+    php5-mongo php5-apcu \
+    php5-curl
 
 RUN /bin/bash -c "wget http://getcomposer.org/composer.phar && mv composer.phar /usr/local/bin/composer"
 RUN chmod +x /usr/local/bin/composer

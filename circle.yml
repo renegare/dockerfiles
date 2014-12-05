@@ -13,3 +13,4 @@ test:
         - make build tag push IMAGE=nginx
         - make build tag push IMAGE=php
         - make build tag push IMAGE=phantomjs
+        - make build tag push IMAGE=nprn-stack

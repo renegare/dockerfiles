@@ -12,7 +12,7 @@ build:
 
 tag: export TAG=$(shell docker run --rm=true -t $(REPO))
 tag:
-	@docker tag $(REPO):latest $(REPO):$(TAG)
+	docker tag $(REPO):latest $(REPO):$(TAG)
 
 run:
 	@docker run --rm=true -it $(REPO) $(CMD)

@@ -10,7 +10,8 @@ machine:
 test:
     override:
         - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
-        - make build tag push IMAGE=nginx
-        - make build tag push IMAGE=php
-        - make build tag push IMAGE=phantomjs
-        - make build tag push IMAGE=nprn-stack
+        - make pull build tag push IMAGE=nginx
+        - make pull build tag push IMAGE=php
+        - make pull build tag push IMAGE=phantomjs
+        - make pull build tag push IMAGE=nprn-stack
+        - make pull build tag push IMAGE=test

@@ -23,4 +23,4 @@ RUN export PHANTOM_JS="phantomjs-1.9.7-linux-x86_64" && \
 RUN gpg --keyserver hkp://keys.gnupg.net --recv-keys D39DC0E3
 RUN curl -sSL https://get.rvm.io | bash -s stable --ruby=2.1.0 --gems=bundler
 
-CMD echo r$(ruby -v | sed -E 's/^ruby ([0-9\.]+)[^0-9\.].*$/\1/')-p$(phantomjs --version)
+CMD /bin/bash -lc 'echo r$(ruby -v | sed -E "s/^ruby ([0-9\.]+)[^0-9\.].*$/\1/")-p$(phantomjs --version)'

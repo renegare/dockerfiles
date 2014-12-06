@@ -13,7 +13,7 @@ test:
         - make pull build tag push IMAGE=nginx
         - make pull build tag push IMAGE=php
         - make pull build tag push IMAGE=phantomjs
-        - make pull build tag push IMAGE=nprn-stack
+        - make pull build tag push IMAGE=nprn-stack:
                 timeout: 300
-        - make pull build tag push IMAGE=test
+        - make pull build tag push IMAGE=test:
                 timeout: 300

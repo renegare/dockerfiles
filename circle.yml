@@ -15,9 +15,3 @@ test:
         - make pull build tag push IMAGE=phantomjs
         - make pull build tag push IMAGE=nprn-stack:
                 timeout: 300
-        - make pull build IMAGE=test:
-                timeout: 300
-        - make tag IMAGE=test:
-                timeout: 300
-        - make push IMAGE=test:
-                timeout: 300

@@ -9,14 +9,21 @@ ENV SUPERVISORD_CONFIG_FILE     /etc/supervisor/conf.d/supervisord.conf
 ENV KIBANA_VERSION              3.1.2
 
 
-RUN apt-get update && apt-get install -y \
-    supervisor nginx apache2-utils /var/www
+RUN apt-get update && \
+    apt-get install -y \
+        supervisor \
+        nginx \
+        apache2-utils
 
-RUN mkdir -p /data /var/log/supervisor /etc/logstash
+RUN mkdir -p 
+    /data \
+    /var/log/supervisor \
+    /etc/logstash \
+    /var/www
 
 WORKDIR /tmp
 
-RUN curl -O https://download.elasticsearch.org/logstash/logstash/logstash-$LOGSTASH_VERSION.tar.gz
+RUN wget https://download.elasticsearch.org/logstash/logstash/logstash-$LOGSTASH_VERSION.tar.gz
 RUN tar zxvf logstash-$LOGSTASH_VERSION.tar.gz && \
     rm -rf logstash-*.tar.gz && \
     mv logstash-* /opt/logstash

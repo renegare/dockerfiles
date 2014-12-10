@@ -1,0 +1,12 @@
+app:
+    build: .
+    ports:
+        - 80
+        - 9200
+        - 9300
+        - 9400
+    environment:
+        ES_HEAP_SIZE: 2g
+        KIBANA_USER: authuser
+        KIBANA_PASS: 48thP455w0rd
+    mem_limit: 4096m

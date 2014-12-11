@@ -15,7 +15,7 @@ RUN apt-get update && \
         nginx \
         apache2-utils
 
-RUN mkdir -p 
+RUN mkdir -p \
     /data \
     /var/log/supervisor \
     /etc/logstash \

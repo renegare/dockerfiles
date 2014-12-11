@@ -40,7 +40,8 @@ COPY logstash.conf              $LOGSTASH_CONFIG_FILE
 COPY supervisord.conf           $SUPERVISORD_CONFIG_FILE
 COPY logstash.key               /etc/logstash/logstash.key
 COPY logstash.crt               /etc/logstash/logstash.crt
-COPY nginx.conf                 /etc/nginx/sites-enabled/default
+COPY nginx-insecure.conf        /etc/nginx/sites-available/insecure
+COPY nginx-basic-auth.conf      /etc/nginx/sites-available/basic-auth
 COPY kibana.js                  /var/www/html/config.js
 COPY Makefile                   /Makefile
 

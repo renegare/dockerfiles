@@ -11,8 +11,15 @@ upload-certificates:
 	@echo "Uploading SSL Certificates to S3"
 
 start:
-	@echo "Creating htpasswd file and starting supervisord ..."
-	@htpasswd -b -c /etc/nginx/conf.d/.htpasswd $(KIBANA_USER) $(KIBANA_PASS)
+	@rm -rf /etc/nginx/sites-enabled/default
+	@if [ "$(KIBANA_SECURE)" = "True" ]; then \
+		htpasswd -b -c /etc/nginx/conf.d/.htpasswd $(KIBANA_USER) $(KIBANA_PASS) && \
+		ln -n /etc/nginx/sites-available/basic-auth /etc/nginx/sites-enabled/default \
+	; fi
+	@if [ "$(KIBANA_SECURE)" != "True" ]; then \
+		ln -n /etc/nginx/sites-available/insecure /etc/nginx/sites-enabled/default \
+	; fi
+	@echo "Starting supervisord ..."
 	@/usr/bin/supervisord
 
 open-browser: export PORT=$(shell fig port app 80 | sed 's/^.*:\([0-9][0-9]*\)$\/\1/')

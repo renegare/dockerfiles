@@ -7,6 +7,7 @@ app:
         - 9400
     environment:
         ES_HEAP_SIZE: 2g
+        KIBANA_SECURE: true
         KIBANA_USER: authuser
         KIBANA_PASS: 48thP455w0rd
     mem_limit: 4096m

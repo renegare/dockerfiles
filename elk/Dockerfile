@@ -16,7 +16,7 @@ WORKDIR /tmp
 
 # install java
 RUN apt-get update
-RUN apt-get install -y \
+RUN apt-get install --no-install-recommends -y \
     openjdk-$JAVA_VERSION-jdk \
     wget curl vim make \
     nginx apache2-utils

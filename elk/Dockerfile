@@ -1,8 +1,8 @@
-FROM ubuntu:15.04
+FROM ubuntu:14.04
 
 MAINTAINER renegare <mudi@renegare.com>
 
-ENV JAVA_VERSION                8
+ENV JAVA_VERSION                7
 ENV ES_VERSION                  1.4.1
 ENV LOGSTASH_VERSION            1.4.2
 ENV KIBANA_VERSION              3.1.2
@@ -17,7 +17,7 @@ WORKDIR /tmp
 # install java
 RUN apt-get update
 RUN apt-get install -y \
-RUN openjdk-$JAVA_VERSION-jdk \
+    openjdk-$JAVA_VERSION-jdk \
     wget curl vim make \
     nginx apache2-utils
 RUN java -version

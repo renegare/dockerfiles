@@ -13,5 +13,6 @@ test:
         - make pull build tag push IMAGE=nginx
         - make pull build tag push IMAGE=php
         - make pull build tag push IMAGE=phantomjs
-        - make pull build tag push IMAGE=nprn-stack:
+        - make pull build tag push IMAGE=nprn-stack
+        - make pull build tag push IMAGE=elk
                 timeout: 300

@@ -15,13 +15,13 @@ ENV LOGSTASH_CONFIG_FILE        /etc/logstash/logstash.conf
 WORKDIR /tmp
 
 # install java
-RUN apt-get update && \
-    apt-get install -y \
-    openjdk-$JAVA_VERSION-jdk \
+RUN apt-get update
+RUN apt-get install -y \
+RUN openjdk-$JAVA_VERSION-jdk \
     wget curl vim make \
-    nginx apache2-utils && \
-    java -version && \
-    nginx -v
+    nginx apache2-utils
+RUN java -version
+RUN nginx -v
 
 # install elasticsearch
 RUN wget https://download.elasticsearch.org/elasticsearch/elasticsearch/elasticsearch-$ES_VERSION.tar.gz

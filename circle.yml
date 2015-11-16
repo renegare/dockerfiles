@@ -10,13 +10,5 @@ machine:
 test:
     override:
         - docker login -e $DOCKER_EMAIL -u $DOCKER_USER -p $DOCKER_PASS
-        # - make pull build tag push IMAGE=nginx:
-        #         timeout: 600
-        # - make pull build tag push IMAGE=php:
-        #         timeout: 600
-        # - make pull build tag push IMAGE=phantomjs:
-        #         timeout: 600
-        # - make pull build tag push IMAGE=nprn-stack:
-        #         timeout: 600
-        - make pull build tag push IMAGE=elk:
+        - make build tag push IMAGE=php:
                 timeout: 600

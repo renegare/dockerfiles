@@ -1,29 +1,20 @@
-FROM renegare/nginx:1.6.2
-MAINTAINER Mudi Renegare <mudi@renegare.com>
+FROM centos:7
+MAINTAINER "Mudi Ugbo" <mudi@renegare.com>
 
-RUN apt-get update
+# ENV INSTALLATION
 
-RUN apt-get install -y \
-    php5-fpm php5-cli \
-    php5-mysql php5-json \
-    php5-pgsql php5-sqlite \
-    php5-imagick php5-gd \
-    php5-intl php5-mcrypt \
-    php5-memcache php5-memcached \
-    php5-mongo php5-apcu \
-    php5-curl
+RUN yum install -y epel-release && \
+    rpm -Uvh https://mirror.webtatic.com/yum/el7/webtatic-release.rpm && \
+    yum install -y \
+        nginx \
+        git && \
+    yum install -y --skip-broken \
+        php55w php55w-fpm php55w-mysql php55w-pecl-memcached php55w-pecl-memcache php55w-mbstring && \
+    curl -sS https://getcomposer.org/installer | php -- --filename=composer --install-dir=/usr/bin
 
-RUN /bin/bash -c "wget http://getcomposer.org/composer.phar && mv composer.phar /usr/local/bin/composer"
-RUN chmod +x /usr/local/bin/composer
-
-RUN echo "cgi.fix_pathinfo = 0;" >> /etc/php5/fpm/php.ini
-RUN echo "<?php phpinfo(); ?>" > /var/www/html/index.php
-
-RUN echo "daemon off;" >> /etc/nginx/nginx.conf
-COPY nginx.conf /etc/nginx/sites-available/default
+WORKDIR /tmp
+ADD Makefile /tmp/Makefile
 
 EXPOSE 80
 
-WORKDIR /var/www/html
-
-CMD php -v | grep -m 1 PHP | sed 's/PHP \([^ -]*\).*/\1/'
+ENTRYPOINT ["/usr/bin/make"]
